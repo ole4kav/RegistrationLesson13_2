@@ -10,7 +10,7 @@ import android.widget.EditText;
 public class AddUser extends AppCompatActivity
 {
     User user = new User();
-/// coment
+/// comment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
