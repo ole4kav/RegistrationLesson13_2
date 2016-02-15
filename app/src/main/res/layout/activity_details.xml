@@ -10,63 +10,59 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.home.registrationlesson13_2.Details">
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:inputType="textPersonName"
-        android:id="@+id/nameEditTextEdit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/nameTextViewDetails"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:focusableInTouchMode="false"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Last"
-        android:inputType="textPersonName"
-        android:id="@+id/lastEditTextEdit"
-        android:layout_below="@+id/nameEditTextEdit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/lastTextViewDetails"
+        android:layout_below="@+id/nameTextViewDetails"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:inputType="textEmailAddress"
-        android:id="@+id/emailEditTextEdit"
-        android:layout_below="@+id/lastEditTextEdit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/emailTextViewDetails"
+        android:layout_below="@+id/lastTextViewDetails"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phone"
-        android:inputType="phone"
-        android:id="@+id/phoneEditTextEdit"
-        android:layout_below="@+id/emailEditTextEdit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/phoneTextViewDetails"
+        android:layout_below="@+id/emailTextViewDetails"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="UserId"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:inputType="number"
-        android:id="@+id/idEditTextEdit"
-        android:layout_below="@+id/phoneEditTextEdit"
+        android:id="@+id/idTextViewDetails"
+        android:layout_below="@+id/phoneTextViewDetails"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Address"
-        android:inputType="textPostalAddress"
-        android:id="@+id/addressEditTextEdit"
-        android:layout_below="@+id/idEditTextEdit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/addressTextViewDetails"
+        android:layout_below="@+id/idTextViewDetails"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -75,7 +71,7 @@
         android:layout_height="wrap_content"
         android:text="EDIT"
         android:id="@+id/editButton"
-        android:layout_below="@+id/addressEditTextEdit"
+        android:layout_below="@+id/addressTextViewDetails"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -86,6 +82,7 @@
         android:id="@+id/deleteButton"
         android:layout_alignTop="@+id/editButton"
         android:layout_toRightOf="@+id/editButton"
-        android:layout_toEndOf="@+id/editButton"/>
+        android:layout_toEndOf="@+id/editButton"
+        android:onClick="clickDeleteBtn"/>
     />
 </RelativeLayout>

@@ -2,7 +2,6 @@ package com.example.home.registrationlesson13_2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -10,7 +9,7 @@ import android.widget.EditText;
 public class AddUser extends AppCompatActivity
 {
     User user = new User();
-/// comment
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,7 @@ public class AddUser extends AppCompatActivity
         }
 
         try {
-            user.id = Integer.parseInt(((EditText) findViewById(R.id.idEditTextEdit)).getText().toString());
+            user.idnum = Integer.parseInt(((EditText) findViewById(R.id.idEditTextEdit)).getText().toString());
         }
         catch (Exception e){
            findViewById(R.id.idEditTextEdit).requestFocus();
@@ -75,17 +74,17 @@ public class AddUser extends AppCompatActivity
         }
 
         Intent data = new Intent();
-        data.putExtra("data", (Parcelable) user);
+        data.putExtra("data",  user);
         setResult(RESULT_OK, data);
 
         finish();
     }
 
     private boolean ifNull(EditText editText) { // if Null - return true
-     if (editText.getText().toString().equals(editText.getTag().toString())){
-         editText.requestFocus();
-       return true;
-     }
+        if (editText.getText().toString().equals(editText.getTag().toString())){
+            editText.requestFocus();
+            return true;
+        }
         return false;
     }
 

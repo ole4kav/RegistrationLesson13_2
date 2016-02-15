@@ -25,10 +25,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buildListView();
 
+        CreateDummyUsers(8);
+
+        buildListView();
     }
 
+    /**
+     *  For debugging only, Creates fake users and adds to the users array list
+     * @param usersCount - How many users to create
+     */
+    private void CreateDummyUsers(int usersCount)
+    {
+        for(int i = 0; i< usersCount; i++) {
+            User user = new User();
+            user.name = "Name " + Integer.toString(i);
+            user.last = "Last " + Integer.toString(i);
+            user.idnum = i;
+            user.phone = "+972- " + Integer.toString((i * i * 123456));
+            user.address = "City " + Integer.toString(i) + ", Street " + Integer.toString(i + 7);
+            user.email = "name" + Integer.toString(i * 979) + "@email.com";
+            user.password = Integer.toString(i + 123456) + Integer.toString(i * 123456);
+
+            userslist.add(user);
+        }
+   }
 
     public void buildListView(){
         ArrayAdapter<User> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,userslist);
@@ -43,13 +64,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 User user = userslist.get(position);
 
-                Intent intentEdit = new Intent(MainActivity.this,Details.class);
-                intentEdit.putExtra("User", user);
-                startActivity(intentEdit);
-
-
-                //Toast.makeText(getApplicationContext(),mListView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
-
+                Intent intentDetails = new Intent(MainActivity.this,Details.class);
+                intentDetails.putExtra("User", user);
+                startActivityForResult(intentDetails, DETAILS);
 
                 return true;
             }
@@ -57,10 +74,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
     }
 
     public void clickAddUserBtn(View v) {
@@ -93,7 +108,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         if (requestCode == DETAILS){
-
+            if (resultCode == RESULT_OK){
+                User newUserDel = data.getParcelableExtra("data");
+                userslist.remove(newUserDel);
+                buildListView();
+            }
         }
     }
 }

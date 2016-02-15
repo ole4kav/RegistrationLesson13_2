@@ -12,22 +12,22 @@ public class User implements Parcelable
     String last;
     String phone;
     String address;
-    int id;
+    int idnum;
     String email;
     String password;
 
-    public User(String name, String last, String phone, String address, int id, String email, String password){
+    public User(String name, String last, String phone, String address, int idnum, String email, String password){
         this.name = name;
         this.last = last;
         this.phone = phone;
         this.address = address;
-        this.id = id;
+        this.idnum = idnum;
         this.email = email;
         this.password = password;
     }
 
-    public User(String name, String last, String phone, String address, int id, String email) {
-        this(name, last, phone, address, id, email,"");
+    public User(String name, String last, String phone, String address, int idnum, String email) {
+        this(name, last, phone, address, idnum, email,"");
     }
 
     public User(String name, String last){
@@ -48,7 +48,7 @@ public class User implements Parcelable
             User checkUser = (User) o;
 
             if ((this.name.equals(checkUser.name)) && (this.last.equals(checkUser.last)) && (this.phone.equals(checkUser.phone))
-                    && (this.address.equals(checkUser.address)) && (this.id == checkUser.id) && (this.email.equals(checkUser.email))
+                    && (this.address.equals(checkUser.address)) && (this.idnum == checkUser.idnum) && (this.email.equals(checkUser.email))
                     && (this.password.equals(checkUser.password))) {
                 return true;
             }
@@ -56,7 +56,7 @@ public class User implements Parcelable
         return false;
     }
 
-
+    //Toast.makeText(getApplicationContext(),mListView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
 
 
     /////////
@@ -65,7 +65,7 @@ public class User implements Parcelable
         last = in.readString();
         phone = in.readString();
         address = in.readString();
-        id = in.readInt();
+        idnum = in.readInt();
         email = in.readString();
         password = in.readString();
     }
@@ -94,7 +94,7 @@ public class User implements Parcelable
         dest.writeString(last);
         dest.writeString(phone);
         dest.writeString(address);
-        dest.writeInt(id);
+        dest.writeInt(idnum);
         dest.writeString(email);
         dest.writeString(password);
     }
