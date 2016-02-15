@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
 
-        CreateDummyUsers(8);
+        CreateDummyUsers(2);
 
         buildListView();
     }
