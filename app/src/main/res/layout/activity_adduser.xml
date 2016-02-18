@@ -17,7 +17,7 @@
         android:text="Name"
         android:tag="Name"
         android:inputType="textPersonName"
-        android:id="@+id/nameEditTextEdit"
+        android:id="@+id/nameEditTextAdd"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
@@ -28,8 +28,8 @@
         android:text="Last"
         android:tag="Last"
         android:inputType="textPersonName"
-        android:id="@+id/lastEditTextEdit"
-        android:layout_below="@+id/nameEditTextEdit"
+        android:id="@+id/lastEditTextAdd"
+        android:layout_below="@+id/nameEditTextAdd"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -39,8 +39,8 @@
         android:text="Email"
         android:tag="Email"
         android:inputType="textEmailAddress"
-        android:id="@+id/emailEditTextEdit"
-        android:layout_below="@+id/lastEditTextEdit"
+        android:id="@+id/emailEditTextAdd"
+        android:layout_below="@+id/lastEditTextAdd"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -50,8 +50,8 @@
         android:text="Phone"
         android:tag="Phone"
         android:inputType="phone"
-        android:id="@+id/phoneEditTextEdit"
-        android:layout_below="@+id/emailEditTextEdit"
+        android:id="@+id/phoneEditTextAdd"
+        android:layout_below="@+id/emailEditTextAdd"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -61,8 +61,8 @@
         android:text="UserId"
         android:tag="UserId"
         android:inputType="number"
-        android:id="@+id/idEditTextEdit"
-        android:layout_below="@+id/phoneEditTextEdit"
+        android:id="@+id/idEditTextAdd"
+        android:layout_below="@+id/phoneEditTextAdd"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -72,8 +72,8 @@
         android:text="Address"
         android:tag="Address"
         android:inputType="textPostalAddress"
-        android:id="@+id/addressEditTextEdit"
-        android:layout_below="@+id/idEditTextEdit"
+        android:id="@+id/addressEditTextAdd"
+        android:layout_below="@+id/idEditTextAdd"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -84,7 +84,7 @@
         android:tag="Password"
         android:inputType="textPassword"
         android:id="@+id/passwordEditTextAdd"
-        android:layout_below="@+id/addressEditTextEdit"
+        android:layout_below="@+id/addressEditTextAdd"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 

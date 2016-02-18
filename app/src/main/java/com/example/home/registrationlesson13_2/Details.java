@@ -1,14 +1,17 @@
 package com.example.home.registrationlesson13_2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-public class Details extends AppCompatActivity
+public class Details extends Activity
 {
     User myUser = new User();
+    int UserPosition;
+    static final int DETAIL_OK = 11;
+    static final int EDIT_OK = 12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +30,32 @@ public class Details extends AppCompatActivity
             ((TextView) findViewById(R.id.idTextViewDetails)).setText(Integer.toString(myUser.idnum));
             ((TextView) findViewById(R.id.addressTextViewDetails)).setText(myUser.address);
         }
+        if (startingIntent.hasExtra("Position")){
+            UserPosition = startingIntent.getIntExtra("Position", 0);
+        }
     }
 
     public void clickDeleteBtn(View view) {
-
         Intent data = new Intent();
         data.putExtra("data", myUser);
-        setResult(RESULT_OK, data);
+        setResult(DETAIL_OK, data);
         finish();
+    }
+
+    public void clickEditBtn(View view) {
+        Intent intentEditUser = new Intent(getApplicationContext(), Edit.class);
+        intentEditUser.putExtra("User", myUser);
+        intentEditUser.putExtra("Position",UserPosition);
+        startActivityForResult(intentEditUser, EDIT_OK);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            User myNewUser = data.getParcelableExtra("User");
+            data.putExtra("Position", UserPosition);
+            data.putExtra("User", myNewUser);
+            setResult(EDIT_OK, data);
+            finish();
+        }
     }
 }

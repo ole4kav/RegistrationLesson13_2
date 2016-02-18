@@ -1,8 +1,8 @@
 package com.example.home.registrationlesson13_2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -12,10 +12,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
+public class MainActivity extends Activity implements AdapterView.OnItemLongClickListener
 {
 
     ArrayList<User> userslist = new ArrayList<>();
+    ArrayAdapter<User> adapter;
+    ListView mListView;
 
     static final int ADD_USER = 1;
     static final int DETAILS = 2;
@@ -24,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         CreateDummyUsers(2);
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      *  For debugging only, Creates fake users and adds to the users array list
      * @param usersCount - How many users to create
      */
+
     private void CreateDummyUsers(int usersCount)
     {
         for(int i = 0; i< usersCount; i++) {
@@ -52,30 +54,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
    }
 
     public void buildListView(){
-        ArrayAdapter<User> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,userslist);
-
-        final ListView mListView = (ListView) findViewById(R.id.listView);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,userslist);
+        mListView = (ListView) findViewById(R.id.listView);
         mListView.setAdapter(adapter);
-
         mListView.setOnItemLongClickListener(new OnItemLongClickListener()
         {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
                 User user = userslist.get(position);
-
                 Intent intentDetails = new Intent(MainActivity.this,Details.class);
                 intentDetails.putExtra("User", user);
+                intentDetails.putExtra("Position",position);
                 startActivityForResult(intentDetails, DETAILS);
-
                 return true;
             }
         });
     }
 
-
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        return false;
     }
 
     public void clickAddUserBtn(View v) {
@@ -91,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if (userslist==null){
                     userslist = new ArrayList<>();
                     userslist.add(newUser);
+                    adapter.notifyDataSetChanged();
                 }
                 else
                 {
@@ -101,18 +100,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         }
                     }
                     userslist.add(newUser);
+                    adapter.notifyDataSetChanged();
                 }
-                Toast.makeText(this, "DONE "+userslist.size(),Toast.LENGTH_LONG).show();
-                buildListView();
+                Toast.makeText(this, "DONE ",Toast.LENGTH_LONG).show();
             }
         }
-
         if (requestCode == DETAILS){
-            if (resultCode == RESULT_OK){
+            if (resultCode == Details.DETAIL_OK){
                 User newUserDel = data.getParcelableExtra("data");
                 userslist.remove(newUserDel);
-                buildListView();
             }
+            if (resultCode == Details.EDIT_OK){
+                User newUserEd = data.getParcelableExtra("User");
+                int UserPositionSave = data.getIntExtra("Position",0);
+                userslist.remove(UserPositionSave);
+                userslist.add(newUserEd);
+            }
+            adapter.notifyDataSetChanged();
         }
     }
 }

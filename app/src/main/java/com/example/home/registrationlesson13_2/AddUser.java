@@ -1,12 +1,12 @@
 package com.example.home.registrationlesson13_2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-public class AddUser extends AppCompatActivity
+public class AddUser extends Activity
 {
     User user = new User();
 
@@ -15,12 +15,12 @@ public class AddUser extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adduser);
 
-        EditText name = (EditText) findViewById(R.id.nameEditTextEdit);
-        EditText last = (EditText) findViewById(R.id.lastEditTextEdit);
-        EditText email = (EditText) findViewById(R.id.emailEditTextEdit);
-        EditText phone = (EditText) findViewById(R.id.phoneEditTextEdit);
-        EditText userId = (EditText) findViewById(R.id.idEditTextEdit);
-        EditText address = (EditText) findViewById(R.id.addressEditTextEdit);
+        EditText name = (EditText) findViewById(R.id.nameEditTextAdd);
+        EditText last = (EditText) findViewById(R.id.lastEditTextAdd);
+        EditText email = (EditText) findViewById(R.id.emailEditTextAdd);
+        EditText phone = (EditText) findViewById(R.id.phoneEditTextAdd);
+        EditText userId = (EditText) findViewById(R.id.idEditTextAdd);
+        EditText address = (EditText) findViewById(R.id.addressEditTextAdd);
         EditText password = (EditText) findViewById(R.id.passwordEditTextAdd);
 
         name.setOnFocusChangeListener(myFocus);
@@ -36,36 +36,36 @@ public class AddUser extends AppCompatActivity
     public void clickAddBtn(View v) {
 
         //// CREATE NEW USER
-        user.name = ((EditText) findViewById(R.id.nameEditTextEdit)).getText().toString();
-        if (ifNull((EditText)findViewById(R.id.nameEditTextEdit))){     //if null
+        user.name = ((EditText) findViewById(R.id.nameEditTextAdd)).getText().toString();
+        if (ifNull((EditText)findViewById(R.id.nameEditTextAdd))){     //if null
             return;
         }
 
-        user.last = ((EditText) findViewById(R.id.lastEditTextEdit)).getText().toString();
-        if (ifNull((EditText)findViewById(R.id.lastEditTextEdit))){     //if null
+        user.last = ((EditText) findViewById(R.id.lastEditTextAdd)).getText().toString();
+        if (ifNull((EditText)findViewById(R.id.lastEditTextAdd))){     //if null
             return;
         }
 
-        user.email = ((EditText) findViewById(R.id.emailEditTextEdit)).getText().toString();
-        if (ifNull((EditText)findViewById(R.id.emailEditTextEdit))){     //if null
+        user.email = ((EditText) findViewById(R.id.emailEditTextAdd)).getText().toString();
+        if (ifNull((EditText)findViewById(R.id.emailEditTextAdd))){     //if null
             return;
         }
 
-        user.phone = ((EditText) findViewById(R.id.phoneEditTextEdit)).getText().toString();
-        if (ifNull((EditText)findViewById(R.id.phoneEditTextEdit))){     //if null
+        user.phone = ((EditText) findViewById(R.id.phoneEditTextAdd)).getText().toString();
+        if (ifNull((EditText)findViewById(R.id.phoneEditTextAdd))){     //if null
             return;
         }
 
         try {
-            user.idnum = Integer.parseInt(((EditText) findViewById(R.id.idEditTextEdit)).getText().toString());
+            user.idnum = Integer.parseInt(((EditText) findViewById(R.id.idEditTextAdd)).getText().toString());
         }
         catch (Exception e){
-           findViewById(R.id.idEditTextEdit).requestFocus();
+           findViewById(R.id.idEditTextAdd).requestFocus();
             return;
         }
 
-        user.address = ((EditText) findViewById(R.id.addressEditTextEdit)).getText().toString();
-        if (ifNull((EditText)findViewById(R.id.addressEditTextEdit))){     //if null
+        user.address = ((EditText) findViewById(R.id.addressEditTextAdd)).getText().toString();
+        if (ifNull((EditText)findViewById(R.id.addressEditTextAdd))){     //if null
             return;
         }
         user.password = ((EditText) findViewById(R.id.passwordEditTextAdd)).getText().toString();

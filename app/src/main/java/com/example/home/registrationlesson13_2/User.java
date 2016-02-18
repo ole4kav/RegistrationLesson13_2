@@ -98,5 +98,6 @@ public class User implements Parcelable
         dest.writeString(email);
         dest.writeString(password);
     }
+
 }
 

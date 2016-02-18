@@ -73,7 +73,8 @@
         android:id="@+id/editButton"
         android:layout_below="@+id/addressTextViewDetails"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:onClick="clickEditBtn"/>
 
     <Button
         android:layout_width="wrap_content"
