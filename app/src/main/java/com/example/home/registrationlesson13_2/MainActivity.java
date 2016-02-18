@@ -27,7 +27,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemLongClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CreateDummyUsers(2);
+        CreateDummyUsers(9);
 
         buildListView();
     }
@@ -51,7 +51,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemLongClic
 
             userslist.add(user);
         }
-   }
+   } ////////
+
+
 
     public void buildListView(){
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,userslist);

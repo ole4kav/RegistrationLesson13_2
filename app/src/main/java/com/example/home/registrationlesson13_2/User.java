@@ -56,10 +56,6 @@ public class User implements Parcelable
         return false;
     }
 
-    //Toast.makeText(getApplicationContext(),mListView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
-
-
-    /////////
     protected User(Parcel in) {
         name = in.readString();
         last = in.readString();
@@ -98,6 +94,5 @@ public class User implements Parcelable
         dest.writeString(email);
         dest.writeString(password);
     }
-
 }
 

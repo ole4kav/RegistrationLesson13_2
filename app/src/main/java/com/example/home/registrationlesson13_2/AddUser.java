@@ -30,7 +30,6 @@ public class AddUser extends Activity
         userId.setOnFocusChangeListener(myFocus);
         address.setOnFocusChangeListener(myFocus);
         password.setOnFocusChangeListener(myFocus);
-
     }
 
     public void clickAddBtn(View v) {
@@ -38,45 +37,32 @@ public class AddUser extends Activity
         //// CREATE NEW USER
         user.name = ((EditText) findViewById(R.id.nameEditTextAdd)).getText().toString();
         if (ifNull((EditText)findViewById(R.id.nameEditTextAdd))){     //if null
-            return;
-        }
-
+            return;}
         user.last = ((EditText) findViewById(R.id.lastEditTextAdd)).getText().toString();
         if (ifNull((EditText)findViewById(R.id.lastEditTextAdd))){     //if null
-            return;
-        }
-
+            return;}
         user.email = ((EditText) findViewById(R.id.emailEditTextAdd)).getText().toString();
         if (ifNull((EditText)findViewById(R.id.emailEditTextAdd))){     //if null
-            return;
-        }
-
+            return;}
         user.phone = ((EditText) findViewById(R.id.phoneEditTextAdd)).getText().toString();
         if (ifNull((EditText)findViewById(R.id.phoneEditTextAdd))){     //if null
-            return;
-        }
-
+            return;}
         try {
             user.idnum = Integer.parseInt(((EditText) findViewById(R.id.idEditTextAdd)).getText().toString());
         }
         catch (Exception e){
            findViewById(R.id.idEditTextAdd).requestFocus();
-            return;
-        }
-
+            return;}
         user.address = ((EditText) findViewById(R.id.addressEditTextAdd)).getText().toString();
         if (ifNull((EditText)findViewById(R.id.addressEditTextAdd))){     //if null
-            return;
-        }
+            return;}
         user.password = ((EditText) findViewById(R.id.passwordEditTextAdd)).getText().toString();
         if (ifNull((EditText)findViewById(R.id.passwordEditTextAdd))){     //if null
-            return;
-        }
+            return;}
 
         Intent data = new Intent();
         data.putExtra("data",  user);
         setResult(RESULT_OK, data);
-
         finish();
     }
 
