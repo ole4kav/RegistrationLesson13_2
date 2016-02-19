@@ -9,15 +9,15 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class MainActivity extends Activity implements AdapterView.OnItemLongClickListener
 {
-
     ArrayList<User> userslist = new ArrayList<>();
     ArrayAdapter<User> adapter;
     ListView mListView;
+
+    String nUserlst;
 
     static final int ADD_USER = 1;
     static final int DETAILS = 2;
@@ -27,10 +27,27 @@ public class MainActivity extends Activity implements AdapterView.OnItemLongClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CreateDummyUsers(9);
+        if (savedInstanceState != null) {
+            userslist = savedInstanceState.getParcelableArrayList(nUserlst);
+        }
+
+        //CreateDummyUsers(2);  //For debugging only, Creates fake users and adds to the users array list
 
         buildListView();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Make sure to call the super method so that the states of our views are saved
+        super.onSaveInstanceState(outState);
+        // Save our own state now
+
+        outState.putSerializable(nUserlst,userslist);
+    }
+
+
+
+
 
     /**
      *  For debugging only, Creates fake users and adds to the users array list

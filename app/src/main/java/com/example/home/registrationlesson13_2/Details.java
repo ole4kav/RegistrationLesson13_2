@@ -43,7 +43,7 @@ public class Details extends Activity
     }
 
     public void clickEditBtn(View view) {
-        Intent intentEditUser = new Intent(getApplicationContext(), Edit.class);
+        Intent intentEditUser = new Intent(this, Edit.class);
         intentEditUser.putExtra("User", myUser);
         intentEditUser.putExtra("Position",UserPosition);
         startActivityForResult(intentEditUser, EDIT_OK);
